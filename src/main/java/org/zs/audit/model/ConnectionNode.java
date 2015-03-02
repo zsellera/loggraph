@@ -1,6 +1,7 @@
 package org.zs.audit.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ConnectionNode extends Node {
 	private final List<EntityNode> links;
 	private final List<Edge> edges;
-	private final List<LogMessage> messages = new LinkedList<>();
+	private List<LogMessage> messages = new LinkedList<>();
 
 	public ConnectionNode(long id, String type, List<EntityNode> links, long startEdgeId) {
 		super(id, type, BOX);
@@ -64,5 +65,15 @@ public class ConnectionNode extends Node {
 
 	public void addMessage(LogMessage logMessage) {
 		this.messages.add(logMessage);
+	}
+	
+	public void removeOldMessages(Date until) {
+		List<LogMessage> logMessages = this.messages;
+		this.messages = new LinkedList<LogMessage>();
+		for (LogMessage lm : logMessages) {
+			if (lm.getDate().after(until)) {
+				this.messages.add(lm);
+			}
+		}
 	}
 }

@@ -72,7 +72,7 @@ public class Graph {
 		List<String> removeConnection = new LinkedList<>();
 		Set<Entity> preserveEntities = new HashSet<>(entities.keySet());
 		for (Entry<String, ConnectionNode> entry : connectors.entrySet()) {
-			entry.getValue().getMessages().removeIf(m -> m.getDate().before(until));
+			entry.getValue().removeOldMessages(until);
 			if (entry.getValue().getMessages().size() == 0) {
 				removeConnection.add(entry.getKey());
 			} else {

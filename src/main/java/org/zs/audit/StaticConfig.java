@@ -9,7 +9,7 @@ public class StaticConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("main.html");
+		registry.addViewController("/graph/dashboard").setViewName("/main.html");
 	}
 	
 }

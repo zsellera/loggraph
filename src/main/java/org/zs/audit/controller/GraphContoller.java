@@ -24,14 +24,14 @@ public class GraphContoller {
 	@Autowired
 	Graph graph;
 	
-	@RequestMapping("/graph")
+	@RequestMapping("/graph/graph")
 	public GraphDto getGraph() {
 		synchronized (graph) {
 			return new GraphDto(graph.getNodes(), graph.getEdges());
 		}
 	}
 	
-	@RequestMapping("/logs")
+	@RequestMapping("/graph/logs")
 	public List<LogMessage> getLogs(@RequestParam(value="node") long nodeId) {
 		List<LogMessage> logs;
 		synchronized (graph) {
@@ -41,14 +41,14 @@ public class GraphContoller {
 		return logs;
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.PUT)
+	@RequestMapping(value="/graph/add", method=RequestMethod.PUT)
 	public void addConnection(@RequestBody final LogEvent l) {
 		synchronized (graph) {
 			graph.addLog(l);
 		}
 	}
 	
-	@RequestMapping("/cleanup")
+	@RequestMapping("/graph/cleanup")
 	public void cleanup() {
 		synchronized (graph) {
 			Calendar untilCalendar = Calendar.getInstance();
