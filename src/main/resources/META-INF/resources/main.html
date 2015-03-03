@@ -48,9 +48,8 @@
 			c_nids.forEach(function(n){if (a_nids.indexOf(n) < 0) nodes.remove(n);});
 			data.nodes.forEach(function(n){if (c_nids.indexOf(n.id) < 0) nodes.add(n);});
 			data.edges.forEach(function(e){if (c_eids.indexOf(e.id) < 0) edges.add(e);});
-			
-			setTimeout(periodicCheck, 2000);
 		});
+		setTimeout(periodicCheck, 5000);
 	}
 	
 	function getLoglines(node) {
