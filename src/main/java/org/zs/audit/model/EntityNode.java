@@ -12,11 +12,19 @@ public class EntityNode extends Node {
 	}
 	
 	static String makeLabel(Entity e) {
-		return e.getType() + ":" + e.getKey();
+		String key = e.getKey();
+		int hiddenPart = key.indexOf('|');
+		if (hiddenPart > 0) {
+			key = e.getKey().substring(0, hiddenPart);
+		}
+		if (key.length() > 15) {
+			key = key.substring(0, 12) + "...";
+		}
+		return e.getType() + ":" + key;
 	}
 	
 	static String makeShape(Entity e) {
-		return ELLIPSE;
+		return BOX;
 	}
 
 	@JsonIgnore

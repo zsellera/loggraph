@@ -5,10 +5,12 @@ public abstract class Node implements Comparable<Node> {
 	public static final String CIRCLE = "circle";
 	public static final String ELLIPSE = "ellipse";
 	public static final String SQUARE = "square";
+	public static final String DOT = "dot";
 	
 	private final long id;
 	private final String label;
 	private final String shape;
+	private final int size = 2;
 	
 	protected Node(long id, String label, String shape) {
 		super();
@@ -33,5 +35,8 @@ public abstract class Node implements Comparable<Node> {
 	public String getShape() {
 		return shape;
 	}
-	
+
+	public int getSize() {
+		return size;
+	}
 }

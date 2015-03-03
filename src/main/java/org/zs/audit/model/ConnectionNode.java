@@ -13,7 +13,7 @@ public class ConnectionNode extends Node {
 	private List<LogMessage> messages = new LinkedList<>();
 
 	public ConnectionNode(long id, String type, List<EntityNode> links, long startEdgeId) {
-		super(id, type, BOX);
+		super(id, type, DOT);
 		this.links = links;
 		this.edges = createEdges(id, links, startEdgeId);
 	}
